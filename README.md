@@ -2,6 +2,15 @@
 This is an interesting image-to-image translation that uses the natural language to as guidance information (you can also use the image or label).
 In this work, the attention mechanism  similar to AttnGAN [1] is used to manipulate image attributes. By utilizing the Residual block [2]with CBN [3], RAGAN can tranform the image into the scene described by language.
 
+## Dependencies
+
+ - Python 2
+ - Pytorch 0.2 or later
+
+ In addition, the pretrained text encoder model and preprocessed data can be found on [AttnGAN](https://github.com/taoxugit/AttnGAN).
+
+
+
 ## Example
 <p align="center"><img src='image/example1.png'  align="center" width='90%'></p>
 
