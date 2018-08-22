@@ -11,16 +11,16 @@ from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 from util.GlobalAttention import GlobalAttentionGeneral as ATT_NET
 
 import functools
-from .cin import CINorm2d
-from .cbn import CBNorm2d
+from .cbin import CBINorm2d
+from .cbbn import CBBNorm2d
 
 def get_norm_layer(layer_type='instance'):
     if layer_type == 'batch':
         norm_layer = functools.partial(nn.BatchNorm2d, affine=True)
-        c_norm_layer = functools.partial(CBNorm2d, affine=True)
+        c_norm_layer = functools.partial(CBBNorm2d, affine=True)
     elif layer_type == 'instance':
         norm_layer = functools.partial(nn.InstanceNorm2d, affine=False)
-        c_norm_layer = functools.partial(CINorm2d, affine=True)
+        c_norm_layer = functools.partial(CBINorm2d, affine=True)
     else:
         raise NotImplementedError('normalization layer [%s] is not found' % layer_type)
     return norm_layer, c_norm_layer

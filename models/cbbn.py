@@ -5,9 +5,9 @@ from torch.nn.modules.batchnorm import _BatchNorm
 from torch.nn  import functional as F
 
 
-class _CBNorm(_BatchNorm):
+class _CBBNorm(_BatchNorm):
     def __init__(self, num_features, num_con, eps=1e-5, momentum=0.1, affine=False):
-        super(_CBNorm, self).__init__(
+        super(_CBBNorm, self).__init__(
             num_features, eps, momentum, True)
         self.ConBias = nn.Sequential(
             nn.Linear(num_con, num_features),
@@ -29,10 +29,10 @@ class _CBNorm(_BatchNorm):
     def eval(self):
         return self
 
-class CBNorm2d(_CBNorm):
+class CBBNorm2d(_CBNorm):
     
     def _check_input_dim(self, input):
         if input.dim() != 4:
             raise ValueError('expected 4D input (got {}D input)'
                              .format(input.dim()))
-        super(CBNorm2d, self)._check_input_dim(input)
+        super(CBBNorm2d, self)._check_input_dim(input)
