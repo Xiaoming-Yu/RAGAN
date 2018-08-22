@@ -26,5 +26,5 @@ As shown above, the first column contains the input image and its ground truth.T
 > 4. *Zhu J Y, Zhang R, Pathak D, et al. Toward multimodal image-to-image translation[C]//Advances in Neural Information Processing Systems. 2017: 465-476.*
 
 ### Contact
-In the begining, I try  to construct an interesting application that can use the text caption from user to indicate image processing. Although RAGAN is still far from my initial ideal, I have to suspend the work due to some "force majeure". If you are interested in this work or have any questions, please feel free reach me (Xiaoming-Yu@pku.edu.cn).
+In the begining, I try  to construct an interesting application that can use the text caption from user to indicate image processing. Although RAGAN is still far from my initial ideal, I have to suspend the work due to some "force majeure". If you are interested in this work or have any questions, please feel free to reach me (Xiaoming-Yu@pku.edu.cn).
 
