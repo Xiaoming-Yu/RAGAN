@@ -1,6 +1,7 @@
 # Residual Attention Generative Adversarial Networks
 This is an interesting image-to-image translation that uses the natural language to as guidance information (you can also use the image or label).
-In this work, the attention mechanism  similar to AttnGAN [1] is used to manipulate image attributes. By utilizing the Residual block [2]with CBN [3], RAGAN can tranform the image into the scene described by language.
+In this work, the attention mechanism  similar to AttnGAN [1] is used to manipulate image attributes. By utilizing the residual block [2]with CBN [3], RAGAN can tranform the image into the scene described by language.
+RAGAN contains three translation stages: one coarse translation used global information and two refined residual attention transaltion used global and local information.
 
 ## Dependencies
 
@@ -12,7 +13,7 @@ In this work, the attention mechanism  similar to AttnGAN [1] is used to manipul
 
 
 ## Example
-<p align="center"><img src='image/example1.png'  align="center" width='90%'></p>
+<p align="center"><img src='image/example1.png'  align="center" width='100%'></p>
 
 ### Example1: unsupervised attributes translation
 In this case, the cycle consistency is used to constraint the unsupervised image generation.
