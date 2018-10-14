@@ -19,9 +19,7 @@ class _CBINorm(_BatchNorm):
         running_mean = self.running_mean.repeat(b)
         running_var = self.running_var.repeat(b)
 
-        if self.affine:
-            bias = self.bias.repeat(b).view(b,c,1,1)
-            weight = self.weight.repeat(b).view(b,c,1,1)
+        
 
         tarBias = self.ConBias(ConInfor).view(b,c,1,1)
         input_reshaped = input.contiguous().view(1, b * c, *input.size()[2:])
@@ -32,8 +30,13 @@ class _CBINorm(_BatchNorm):
         # Reshape back
         self.running_mean.copy_(running_mean.view(b, c).mean(0, keepdim=False))
         self.running_var.copy_(running_var.view(b, c).mean(0, keepdim=False))
-
-        return (out.view(b, c, *input.size()[2:])+tarBias)*weight + bias
+        
+        if self.affine:
+            bias = self.bias.repeat(b).view(b,c,1,1)
+            weight = self.weight.repeat(b).view(b,c,1,1)
+            return (out.view(b, c, *input.size()[2:])+tarBias)*weight + bias
+        else:
+            return out.view(b, c, *input.size()[2:])+tarBias
 
     def eval(self):
         return self

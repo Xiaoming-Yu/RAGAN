@@ -20,7 +20,7 @@ In this case, the cycle consistency is used to constraint the unsupervised image
 <p align="center">
 <img src='image/example2.png'  align="center" width='100%'>
 </p>
-As shown above, the first column is the input image and the remaining columns are the generated results guided by different language.
+As shown above, the first column is the input image and the remaining columns are the generated results guided by different texts.
 
 ### Example2: supervised image colorization
  In this case, the additional image encoder similar to [4] is used to extract the backgroud information to ensure the completeness of guidance information.

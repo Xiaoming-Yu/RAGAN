@@ -8,7 +8,7 @@ from torch.nn  import functional as F
 class _CBBNorm(_BatchNorm):
     def __init__(self, num_features, num_con, eps=1e-5, momentum=0.1, affine=False):
         super(_CBBNorm, self).__init__(
-            num_features, eps, momentum, True)
+            num_features, eps, momentum, affine)
         self.ConBias = nn.Sequential(
             nn.Linear(num_con, num_features),
             nn.Tanh()
@@ -25,12 +25,14 @@ class _CBBNorm(_BatchNorm):
             input, self.running_mean, self.running_var, None, None,
             self.training, self.momentum, self.eps)
         biasSor = self.avgpool(out)
-        return (out - biasSor + biasTar)*weight + bias
+        if self.affine:
+            return (out - biasSor + biasTar)*weight + bias
+        else:
+            return out - biasSor + biasTar
     def eval(self):
         return self
 
-class CBBNorm2d(_CBNorm):
-    
+class CBBNorm2d(_CBBNorm):
     def _check_input_dim(self, input):
         if input.dim() != 4:
             raise ValueError('expected 4D input (got {}D input)'
